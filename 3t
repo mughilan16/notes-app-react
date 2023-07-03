@@ -13,8 +13,7 @@ function App() {
     let tempNotes = Array<TNote>();
     const savedNotes = localStorage.getItem("notes");
     if (savedNotes) {
-      tempNotes = JSON.parse(savedNotes)
-      return tempNotes
+      return setNotes(JSON.parse(savedNotes));
     }
     return [];
   });
@@ -33,6 +32,8 @@ function App() {
       }
     };
     themeCheck();
+    console.log(userTheme);
+    console.log(systemTheme);
   }, []);
 
   useEffect(() => {

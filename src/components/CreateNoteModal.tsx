@@ -15,6 +15,7 @@ function CreateNoteModal(props: {
     formState: { errors },
     register,
     reset,
+    setValue
   } = useForm<TNote>({
     defaultValues: {
       id: props.editNote?.id,
@@ -26,6 +27,10 @@ function CreateNoteModal(props: {
     },
     resolver,
   });
+  if (props.editNote !== undefined) {
+    setValue("title", props.editNote.title)
+    setValue("content", props.editNote.content)
+  }
   const onSubmit = (data: TNote) => {
     const newNote: TNote = {
       id: props.notesLength,
@@ -41,7 +46,7 @@ function CreateNoteModal(props: {
       };
     } else {
       props.setNotes((prev) => {
-        return prev.map((i) => (i.id === props.editNote.id ? newNote : i));
+        return prev.map((i) => (i.id === props.editNote?.id ? newNote : i));
       });
     }
     props.setShowModal(false);
