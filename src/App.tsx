@@ -14,9 +14,10 @@ function App() {
     const savedNotes = localStorage.getItem("notes");
     if (savedNotes) {
       tempNotes = JSON.parse(savedNotes)
-      return tempNotes
+      if (tempNotes.length > 0)
+        return tempNotes
     }
-    return [];
+    return [{ id: 0, title: "Add New Note", content: "Click the add button in the Nav Bar to add a new note" }, { id: 1, title: "Edit Note", content: "You can delete a note by clicking the button in note." }];
   });
   const [selectedNote, setSelectedNote] = useState<TNote>();
   const [selectedEditNote, setSelectedEditNote] = useState<TNote>();
@@ -51,7 +52,7 @@ function App() {
         darkMode={darkMode}
         setDarkMode={setDarkMode}
       />
-      <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4 p-4 w-full mt-14">
+      <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4 p-4 w-full mt-14">
         {notes.map((note, id) => (
           <Note
             note={note}
@@ -138,7 +139,7 @@ function Note(props: {
         </div>
       </div>
       <span
-        className="font-regular ml-1 text-md text-zinc-600 dark:text-zinc-400 text-ellipsis overflow-hidden grow cursor-pointer"
+        className="font-regular text-md text-zinc-600 dark:text-zinc-400 text-ellipsis overflow-hidden grow cursor-pointer"
         onClick={view}
       >
         {props.note.content}
