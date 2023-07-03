@@ -17,7 +17,7 @@ function App() {
       if (tempNotes.length > 0)
         return tempNotes
     }
-    return [{ id: 0, title: "Add New Note", content: "Click the add button in the navigation bar to add a new note" }, { id: 1, title: "Edit Note", content: "You can edit a note by clicking the edit icon in note." }, { id: 2, title: "Delete Node", content: "You can delete a note by clicking the trash icon in note." }, { id: 3, title: "Switch Theme", content: "You can switch theme click the sun or moon button in the navigation bar at the top" }];
+    return [{ id: 0, title: "Add New Note", content: "Click the add button in the navigation bar to add a new note." }, { id: 1, title: "Preview", content: "You can preview a note by clicking the note." }, { id: 2, title: "Edit Note", content: "You can edit a note by clicking the edit icon in note." }, { id: 3, title: "Delete Node", content: "You can delete a note by clicking the trash icon in note." }, { id: 4, title: "Switch Theme", content: "You can switch theme click the sun or moon button in the navigation bar at the top." }];
   });
   const [selectedNote, setSelectedNote] = useState<TNote>();
   const [selectedEditNote, setSelectedEditNote] = useState<TNote>();
